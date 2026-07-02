@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume - Yara Nascimento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #2b2b30;
+            --muted: #6b6b74;
+            --faint: #9a9aa2;
+            --rose: #a83267;
+            --rose-deep: #7a2350;
+            --paper: #ffffff;
+            --bg: #f3f1ee;
+            --line: #e9e5e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 48px auto;
+            background: var(--paper);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px -20px rgba(43,43,48,0.15);
+            overflow: hidden;
+        }
+
+        header {
+            padding: 44px 44px 36px;
+            background: linear-gradient(135deg, #fff4f7 0%, #fdf1e6 100%);
+            border-bottom: 1px solid var(--line);
+        }
+
+        header h1 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 600;
+            font-size: 34px;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+            margin-bottom: 6px;
+        }
+
+        header h2 {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .header-links a {
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--rose-deep);
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(168,50,103,0.25);
+            background: rgba(255,255,255,0.6);
+            transition: .2s ease;
+        }
+
+        .header-links a:hover {
+            background: var(--rose-deep);
+            color: #fff;
+            border-color: var(--rose-deep);
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            padding: 40px 44px 44px;
+        }
+
+        /* LEFT COLUMN */
+        .sidebar {
+            border-right: 1px solid var(--line);
+            padding-right: 24px;
+        }
+
+        .photo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffd3e0, #ffe3c2);
+            margin-bottom: 24px;
+            border: 3px solid var(--paper);
+            box-shadow: 0 0 0 1px var(--line);
+        }
+
+        .sidebar h3 {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin: 26px 0 10px;
+            color: var(--rose);
+        }
+
+        .sidebar h3:first-of-type {
+            margin-top: 0;
+        }
+
+        .sidebar p,
+        .sidebar li {
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .sidebar ul {
+            list-style: none;
+            margin-top: 4px;
+        }
+
+        .sidebar ul li {
+            padding: 3px 0;
+        }
+
+        .sidebar ul li::before {
+            content: "— ";
+            color: var(--rose);
+        }
+
+        /* RIGHT COLUMN */
+        .main-section h3 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 600;
+            font-size: 19px;
+            margin-bottom: 14px;
+            color: var(--ink);
+            position: relative;
+            padding-left: 14px;
+        }
+
+        .main-section h3::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 4px;
+            bottom: 4px;
+            width: 3px;
+            border-radius: 2px;
+            background: var(--rose);
+        }
+
+        .main-section {
+            margin-bottom: 30px;
+        }
+
+        .main-section p {
+            color: var(--muted);
+        }
+
+        .item {
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .item-title {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--ink);
+        }
+
+        .item-subtitle {
+            font-size: 13.5px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .item-date {
+            font-size: 12px;
+            color: var(--faint);
+            margin-top: 2px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #26232a;
+            color: #fff;
+            padding: 40px 44px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        footer h4 {
+            margin-bottom: 12px;
+            color: #f3b8cf;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        footer a {
+            display: block;
+            color: #d8d6dc;
+            text-decoration: none;
+            margin-bottom: 8px;
+            font-size: 14px;
+            transition: color .2s ease;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        footer p {
+            font-size: 13px;
+            margin-top: 12px;
+            color: #8f8c94;
+        }
+
+        /* BACK TO TOP BUTTON */
+        #topo {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: var(--rose-deep);
+            color: white;
+            padding: 11px 18px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            box-shadow: 0 8px 20px -6px rgba(122,35,80,0.5);
+            transition: .2s ease;
+        }
+
+        #topo:hover {
+            background: var(--rose);
+            transform: translateY(-2px);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                border-radius: 0;
+            }
+
+            .content {
+                grid-template-columns: 1fr;
+                padding: 32px 24px;
+            }
+
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--line);
+                padding-right: 0;
+                padding-bottom: 24px;
+                margin-bottom: 8px;
+            }
+
+            header {
+                text-align: center;
+                padding: 36px 24px 28px;
+            }
+
+            .header-links {
+                justify-content: center;
+            }
+
+            .photo {
+                margin: 0 auto 24px;
+            }
+
+            footer {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<a name="top"></a>
+
+<div class="container">
+    <header>
+        <h1>Yara Ipotyra Oliveira do Nascimento</h1>
+        <h2>Training as an Application Development IT Specialist (Fachinformatikerin für Anwendungsentwicklung) | Web Developer</h2>
+
+        <div class="header-links">
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+            <a href="mailto:seuemail@email.com">Email</a>
+        </div>
+    </header>
+
+    <div class="content">
+        <!-- LEFT COLUMN -->
+        <aside class="sidebar">
+            <div class="photo"></div>
+
+            <h3>Contact</h3>
+            <p> Berlin, Germany</p>
+            <p> seuemail@email.com</p>
+            <p> +49 (00) 0000-0000</p>
+
+            <h3>Technical Skills</h3>
+            <ul>
+                <li>HTML5, CSS3</li>
+                <li>JavaScript</li>
+                <li>PHP, MySQL</li>
+                <li>Git / GitHub</li>
+            </ul>
+
+            <h3>Languages</h3>
+            <ul>
+                <li>Portuguese – native</li>
+                <li>German – B2</li>
+                <li>English – B2</li>
+            </ul>
+        </aside>
+
+        <!-- RIGHT COLUMN -->
+        <main>
+            <section class="main-section">
+                <h3>About me</h3>
+                <p>
+                    I am a software development student, passionate about creating simple,
+                    beautiful, and functional interfaces. I have experience with small projects in HTML, CSS, JavaScript, and PHP,
+                    and I am currently training as an Application Development IT Specialist (Fachinformatikerin für Anwendungsentwicklung).
+                </p>
+            </section>
+
+            <section class="main-section">
+                <h3>Projects</h3>
+
+                <div class="item">
+                    <div class="item-title">Traceback – Urban safety platform</div>
+                    <div class="item-subtitle">HTML, CSS, JavaScript, PHP, MySQL</div>
+                    <div class="item-date">2024–2025</div>
+                </div>
+
+                <div class="item">
+                    <div class="item-title">Artify – Independent art marketplace</div>
+                    <div class="item-subtitle">Web Prototype</div>
+                    <div class="item-date">2024</div>
+                </div>
+            </section>
+
+            <section class="main-section">
+                <h3>Education</h3>
+
+                <div class="item">
+                    <div class="item-title">Retraining – Application Development IT Specialist</div>
+                    <div class="item-subtitle">GFN / IHK Berlin</div>
+                    <div class="item-date">2024–2026</div>
+                </div>
+            </section>
+        </main>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div>
+        <h4>Social Media</h4>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
+        <a href="mailto:email@email.com">Email</a>
+    </div>
+
+    <div>
+        <h4>Information</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">About This Site</a>
+        <p>© 2025 - All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- BACK TO TOP BUTTON -->
+<a id="topo" href="#top">↑ Top</a>
+
+</body>
+</html>
