@@ -1,4 +1,4 @@
-# Resume — Yara Nascimento
+# Readme— Yara Nascimento
 
 A single-page, responsive HTML/CSS resume/portfolio site.
 
